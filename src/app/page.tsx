@@ -10,6 +10,7 @@ import UseCases from "../components/UseCases";
 import CallToAction from "../components/CallToAction";
 import Footer from "../components/Footer";
 import SpaceBackground from "../components/SpaceBackground";
+import GlobeVisualization from "../components/GlobeVisualization";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
@@ -205,128 +206,14 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Enhanced Cluster Visualization */}
+          {/* Right Content - Global Folder Animation Visualization */}
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="relative"
           >
-            <div className="relative w-full h-96 lg:h-[600px]">
-              {/* Enhanced background with grid pattern */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-cyan-500/10 rounded-3xl"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)] rounded-3xl"></div>
-              
-              {/* Central KubeStellar Node */}
-              <motion.div 
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1.2, duration: 0.8, type: "spring", stiffness: 200 }}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              >
-                <div className="relative">
-                  <div className="w-28 h-28 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl shadow-cyan-500/30">
-                    <Image 
-                      src="/KubeStellar-with-Logo-transparent-v2.png" 
-                      alt="KubeStellar Logo" 
-                      width={48} 
-                      height={48}
-                      className="w-12 h-12 filter brightness-0 invert"
-                    />
-                  </div>
-                  <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 text-white font-bold text-sm bg-slate-900/80 backdrop-blur-sm px-3 py-1 rounded-full border border-cyan-500/30">
-                    KUBESTELLAR
-                  </div>
-                  
-                  {/* Enhanced pulsing rings */}
-                  <div className="absolute inset-0 rounded-full border-2 border-cyan-400/40 animate-ping"></div>
-                  <div className="absolute inset-2 rounded-full border border-cyan-400/30 animate-pulse"></div>
-                  <div className="absolute -inset-4 rounded-full border border-blue-500/20 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                </div>
-              </motion.div>
-
-              {/* Enhanced Cluster Nodes with animations */}
-              {[
-                { position: 'top-12 right-12', color: 'from-green-400 to-emerald-500', label: 'Edge Cluster', delay: 1.4 },
-                { position: 'top-1/4 left-8', color: 'from-blue-400 to-indigo-500', label: 'Cloud Cluster', delay: 1.6 },
-                { position: 'bottom-1/4 left-16', color: 'from-purple-400 to-violet-500', label: 'On-Prem Cluster', delay: 1.8 },
-                { position: 'bottom-12 right-16', color: 'from-orange-400 to-red-500', label: 'Multi-Cloud', delay: 2.0 },
-                { position: 'top-16 left-1/2', color: 'from-teal-400 to-cyan-500', label: 'Hybrid Cluster', delay: 2.2 }
-              ].map((cluster, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: cluster.delay, duration: 0.6, type: "spring" }}
-                  className={`absolute ${cluster.position} transform -translate-x-1/2 -translate-y-1/2`}
-                >
-                  <div className="relative group">
-                    <div className={`w-20 h-20 bg-gradient-to-br ${cluster.color} rounded-full flex items-center justify-center shadow-xl backdrop-blur-sm border border-white/20`}>
-                      <div className="w-4 h-4 bg-white rounded-full shadow-lg"></div>
-                    </div>
-                    
-                    {/* Enhanced connection lines */}
-                    <svg className="absolute top-1/2 left-1/2 w-32 h-32 -z-10 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                      <defs>
-                        <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="rgb(34, 211, 238)" stopOpacity="0.6"/>
-                          <stop offset="100%" stopColor="rgb(59, 130, 246)" stopOpacity="0.2"/>
-                        </linearGradient>
-                      </defs>
-                      <line 
-                        x1="50%" 
-                        y1="50%" 
-                        x2="50%" 
-                        y2="10%" 
-                        stroke={`url(#gradient-${index})`} 
-                        strokeWidth="2"
-                        className="animate-pulse"
-                      />
-                    </svg>
-                    
-                    {/* Enhanced hover tooltip */}
-                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 border border-slate-700 shadow-xl">
-                      {cluster.label}
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-slate-900/90"></div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-
-              {/* Enhanced Metrics Panel */}
-              <motion.div 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 2.4, duration: 0.6 }}
-                className="absolute top-6 right-6 bg-slate-900/80 backdrop-blur-xl rounded-xl p-6 border border-slate-700/50 shadow-2xl"
-              >
-                <div className="flex items-center space-x-2 mb-4">
-                  <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-                  <h3 className="text-cyan-400 font-bold text-sm tracking-wide">CLUSTER METRICS</h3>
-                </div>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">CLUSTERS</span>
-                    <span className="text-white font-bold">5 Active</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">WORKLOADS</span>
-                    <span className="text-white font-bold">42 Running</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">HEALTH</span>
-                    <span className="text-green-400 font-bold flex items-center">
-                      <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                      98.7%
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">LATENCY</span>
-                    <span className="text-white font-bold">24ms</span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+            <GlobeVisualization />
           </motion.div>
         </div>
       </div>
