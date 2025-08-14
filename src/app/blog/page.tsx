@@ -124,11 +124,9 @@ export default function BlogPage() {
                   <Image 
                     src="/KubeStellar-with-Logo-transparent-v2.png" 
                     alt="KubeStellar Logo" 
-                    width={32} 
-                    height={32}
-                    className="w-8 h-8"
-                  />
-                  <span className="text-white font-bold text-xl tracking-wide">KUBESTELLAR</span>
+                    width={200} 
+                    height={55}
+                  /><span className="text-white font-bold text-xl tracking-wide">KUBESTELLAR</span>
                 </Link>
                 <div className="hidden md:flex space-x-8">
                   <Link href="/" className="text-gray-300 hover:text-white transition-all duration-200 hover:scale-105">Home</Link>
