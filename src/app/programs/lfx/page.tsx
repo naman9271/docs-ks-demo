@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GitHubLogoIcon, ArrowLeftIcon, CheckIcon, CalendarIcon, PersonIcon } from "@radix-ui/react-icons";
 import StarField from "../../../components/StarField";
+import NavHeader from "@/components/nav_header";
 
 export default function LFXProgramPage() {
   return (
@@ -90,45 +91,7 @@ export default function LFXProgramPage() {
         </div>
 
         {/* Navigation Header */}
-        <nav className="relative z-50 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <div className="flex items-center space-x-8">
-                <Link href="/" className="flex items-center space-x-3">
-                  <Image 
-                    src="/KubeStellar-with-Logo-transparent-v2.png" 
-                    alt="KubeStellar Logo" 
-                    width={32} 
-                    height={32}
-                    className="w-8 h-8"
-                  />
-                  <span className="text-white font-bold text-xl tracking-wide">KUBESTELLAR</span>
-                </Link>
-                <div className="hidden md:flex space-x-8">
-                  <Link href="/" className="text-gray-300 hover:text-white transition-all duration-200 hover:scale-105">Home</Link>
-                  <Link href="/programs" className="text-cyan-400 font-semibold">Programs</Link>
-                  <Link href="/blog" className="text-gray-300 hover:text-white transition-all duration-200 hover:scale-105">Blog</Link>
-                  <Link href="/#docs" className="text-gray-300 hover:text-white transition-all duration-200 hover:scale-105">Docs</Link>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <Link 
-                  href="https://github.com/kubestellar/kubestellar" 
-                  className="text-gray-300 hover:text-white transition-all duration-200 hover:scale-110"
-                >
-                  <GitHubLogoIcon className="w-5 h-5" />
-                </Link>
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-indigo-600 to-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-indigo-700 hover:to-blue-700 transition-all duration-200 shadow-lg shadow-indigo-500/25"
-                >
-                  Apply for LFX →
-                </motion.button>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <NavHeader currentPage="programs" />
 
         {/* Back Button */}
         <div className="relative z-10 pt-8 px-4">
