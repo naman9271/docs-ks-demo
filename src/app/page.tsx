@@ -9,15 +9,15 @@ import HowItWorks from "../components/HowItWorks";
 import UseCases from "../components/UseCases";
 import CallToAction from "../components/CallToAction";
 import Footer from "../components/Footer";
-import StarField from "../components/StarField";
+import SpaceBackground from "../components/SpaceBackground";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
 
   return (
     <>
-      {/* Cosmic Star Field Background */}
-      <StarField />
+      {/* Enhanced Space Background */}
+      <SpaceBackground />
       
       <div className="min-h-screen relative overflow-hidden">
         {/* Enhanced cosmic background elements */}

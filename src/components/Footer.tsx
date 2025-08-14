@@ -152,12 +152,9 @@ export default function Footer() {
                 <Image 
                   src="/KubeStellar-with-Logo-transparent-v2.png" 
                   alt="KubeStellar Logo" 
-                  width={40} 
-                  height={40}
-                  className="w-10 h-10"
-                />
-                <span className="text-white font-bold text-xl tracking-wide">KUBESTELLAR</span>
-              </Link>
+                  width={200} 
+                  height={55}
+                /> </Link>
               <p className="text-gray-400 mb-8 leading-relaxed">
                 Multi-cluster Kubernetes orchestration platform that simplifies distributed workload management across diverse infrastructure.
               </p>

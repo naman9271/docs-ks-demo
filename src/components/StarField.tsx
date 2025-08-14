@@ -30,16 +30,16 @@ export default function StarField() {
 
     const createStars = () => {
       const stars: Star[] = [];
-      const numStars = Math.floor((canvas.width * canvas.height) / 8000); // Responsive star count
+      const numStars = Math.floor((canvas.width * canvas.height) / 25000); // Much fewer stars
       
       for (let i = 0; i < numStars; i++) {
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           z: Math.random() * 1000,
-          size: Math.random() * 2 + 0.5,
-          opacity: Math.random() * 0.8 + 0.2,
-          speed: Math.random() * 0.5 + 0.1
+          size: Math.random() * 1.5 + 0.3, // Smaller stars
+          opacity: Math.random() * 0.4 + 0.1, // Lower opacity
+          speed: Math.random() * 0.3 + 0.05 // Slower movement
         });
       }
       
@@ -99,15 +99,13 @@ export default function StarField() {
           star.y = Math.random() * canvas.height;
         }
         
-        // Twinkle effect
-        star.opacity += (Math.random() - 0.5) * 0.02;
-        star.opacity = Math.max(0.1, Math.min(1, star.opacity));
+        // No twinkling - keep stars static
         
         drawStar(star);
       });
       
-      // Add shooting stars occasionally
-      if (Math.random() < 0.001) {
+      // Add shooting stars more frequently
+      if (Math.random() < 0.005) {
         drawShootingStar();
       }
       
@@ -116,20 +114,36 @@ export default function StarField() {
 
     const drawShootingStar = () => {
       const startX = Math.random() * canvas.width;
-      const startY = Math.random() * canvas.height * 0.5;
-      const endX = startX + 100 + Math.random() * 200;
-      const endY = startY + 50 + Math.random() * 100;
+      const startY = Math.random() * canvas.height * 0.3; // Start higher up
+      const length = 150 + Math.random() * 250; // Longer trails
+      const angle = Math.random() * Math.PI / 3 + Math.PI / 6; // Diagonal movement
+      const endX = startX + Math.cos(angle) * length;
+      const endY = startY + Math.sin(angle) * length;
+      
+      // Validate coordinates
+      if (!isFinite(startX) || !isFinite(startY) || !isFinite(endX) || !isFinite(endY)) {
+        return;
+      }
       
       const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
-      gradient.addColorStop(0, 'rgba(147, 197, 253, 0.8)');
-      gradient.addColorStop(0.5, 'rgba(59, 130, 246, 0.6)');
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
+      gradient.addColorStop(0.3, 'rgba(147, 197, 253, 0.7)');
+      gradient.addColorStop(0.7, 'rgba(59, 130, 246, 0.4)');
       gradient.addColorStop(1, 'rgba(147, 197, 253, 0)');
       
       ctx.strokeStyle = gradient;
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 3;
       ctx.beginPath();
       ctx.moveTo(startX, startY);
       ctx.lineTo(endX, endY);
+      ctx.stroke();
+      
+      // Add a bright core
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(startX, startY);
+      ctx.lineTo(startX + Math.cos(angle) * length * 0.3, startY + Math.sin(angle) * length * 0.3);
       ctx.stroke();
     };
 
