@@ -207,7 +207,7 @@ export default function ProgramsPage() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-1/4 left-1/4 text-8xl opacity-30"
+          className="absolute top-1/4 left-1/4 text-9xl opacity-35"
         >
           🛸
         </motion.div>
@@ -224,7 +224,7 @@ export default function ProgramsPage() {
             ease: "easeInOut",
             delay: 5
           }}
-          className="absolute top-1/2 right-1/3 text-7xl opacity-25"
+          className="absolute top-1/2 right-1/3 text-8xl opacity-30"
         >
           🚀
         </motion.div>
@@ -241,7 +241,7 @@ export default function ProgramsPage() {
             ease: "easeInOut",
             delay: 10
           }}
-          className="absolute bottom-1/3 left-1/2 text-6xl opacity-20"
+          className="absolute bottom-1/3 left-1/2 text-7xl opacity-25"
         >
           🛸
         </motion.div>
@@ -331,7 +331,7 @@ export default function ProgramsPage() {
                 <div className="text-gray-300">Active Participants</div>
               </div>
               <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50">
-                <div className="text-3xl font-bold text-purple-400 mb-2">4</div>
+                <div className="text-3xl font-bold text-purple-400 mb-2">6</div>
                 <div className="text-gray-300">Program Tracks</div>
               </div>
               <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50">

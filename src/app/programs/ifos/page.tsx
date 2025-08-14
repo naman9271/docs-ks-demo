@@ -11,6 +11,76 @@ export default function IFOSProgramPage() {
     <>
       <StarField />
       
+      {/* Floating Spaceship/UFO Animation */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-5">
+        <motion.div
+          animate={{
+            x: [0, 88, 176, 132, 44, 0],
+            y: [0, -52, -104, -130, -65, 0],
+            rotate: [0, 14, -14, 9, -9, 0]
+          }}
+          transition={{
+            duration: 24,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-1/4 text-9xl opacity-35"
+        >
+          🛸
+        </motion.div>
+        
+        <motion.div
+          animate={{
+            x: [0, -82, -164, -123, -41, 0],
+            y: [0, 68, 136, 170, 85, 0],
+            rotate: [0, -18, 18, -12, 12, 0]
+          }}
+          transition={{
+            duration: 28,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3
+          }}
+          className="absolute bottom-1/4 right-1/4 text-8xl opacity-30"
+        >
+          🚀
+        </motion.div>
+
+        <motion.div
+          animate={{
+            x: [0, 58, 116, 87, 29, 0],
+            y: [0, -38, -76, -95, -47, 0],
+            rotate: [0, 10, -10, 6, -6, 0]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+          className="absolute top-1/3 right-1/5 text-7xl opacity-25"
+        >
+          🛸
+        </motion.div>
+
+        <motion.div
+          animate={{
+            x: [0, -48, -96, -72, -24, 0],
+            y: [0, 78, 156, 195, 97, 0],
+            rotate: [0, -16, 16, -10, 10, 0]
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 7
+          }}
+          className="absolute bottom-1/6 left-1/6 text-6xl opacity-22"
+        >
+          🚀
+        </motion.div>
+      </div>
+      
       <div className="min-h-screen relative">
         {/* Enhanced cosmic background elements */}
         <div className="absolute inset-0 overflow-hidden">

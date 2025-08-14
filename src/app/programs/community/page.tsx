@@ -11,6 +11,59 @@ export default function CommunityChampionsPage() {
     <>
       <StarField />
       
+      {/* Floating Spaceship/UFO Animation */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-5">
+        <motion.div
+          animate={{
+            x: [0, 105, 210, 157, 52, 0],
+            y: [0, -65, -130, -162, -81, 0],
+            rotate: [0, 17, -17, 12, -12, 0]
+          }}
+          transition={{
+            duration: 27,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-1/4 text-9xl opacity-35"
+        >
+          🛸
+        </motion.div>
+        
+        <motion.div
+          animate={{
+            x: [0, -95, -190, -142, -47, 0],
+            y: [0, 80, 160, 200, 100, 0],
+            rotate: [0, -21, 21, -15, 15, 0]
+          }}
+          transition={{
+            duration: 31,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 7
+          }}
+          className="absolute bottom-1/4 right-1/4 text-8xl opacity-30"
+        >
+          🚀
+        </motion.div>
+
+        <motion.div
+          animate={{
+            x: [0, 70, 140, 105, 35, 0],
+            y: [0, -50, -100, -125, -62, 0],
+            rotate: [0, 13, -13, 9, -9, 0]
+          }}
+          transition={{
+            duration: 23,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4
+          }}
+          className="absolute top-1/3 right-1/5 text-7xl opacity-25"
+        >
+          🛸
+        </motion.div>
+      </div>
+      
       <div className="min-h-screen relative">
         {/* Enhanced cosmic background elements */}
         <div className="absolute inset-0 overflow-hidden">

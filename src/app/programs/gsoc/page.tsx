@@ -11,6 +11,59 @@ export default function GSoCProgramPage() {
     <>
       <StarField />
       
+      {/* Floating Spaceship/UFO Animation */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-5">
+        <motion.div
+          animate={{
+            x: [0, 100, 200, 150, 50, 0],
+            y: [0, -60, -120, -150, -75, 0],
+            rotate: [0, 16, -16, 11, -11, 0]
+          }}
+          transition={{
+            duration: 26,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-1/4 text-9xl opacity-35"
+        >
+          🛸
+        </motion.div>
+        
+        <motion.div
+          animate={{
+            x: [0, -90, -180, -135, -45, 0],
+            y: [0, 75, 150, 187, 93, 0],
+            rotate: [0, -20, 20, -14, 14, 0]
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 5
+          }}
+          className="absolute bottom-1/4 right-1/4 text-8xl opacity-30"
+        >
+          🚀
+        </motion.div>
+
+        <motion.div
+          animate={{
+            x: [0, 65, 130, 97, 32, 0],
+            y: [0, -45, -90, -112, -56, 0],
+            rotate: [0, 12, -12, 8, -8, 0]
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+          className="absolute top-1/3 right-1/5 text-7xl opacity-25"
+        >
+          🛸
+        </motion.div>
+      </div>
+      
       <div className="min-h-screen relative">
         {/* Enhanced cosmic background elements */}
         <div className="absolute inset-0 overflow-hidden">

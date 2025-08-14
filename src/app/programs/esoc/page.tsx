@@ -24,7 +24,7 @@ export default function ESoCProgramPage() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-1/4 left-1/4 text-7xl opacity-25"
+          className="absolute top-1/4 left-1/4 text-9xl opacity-30"
         >
           🛸
         </motion.div>
@@ -41,9 +41,26 @@ export default function ESoCProgramPage() {
             ease: "easeInOut",
             delay: 8
           }}
-          className="absolute bottom-1/4 right-1/4 text-6xl opacity-20"
+          className="absolute bottom-1/4 right-1/4 text-8xl opacity-25"
         >
           🚀
+        </motion.div>
+
+        <motion.div
+          animate={{
+            x: [0, 80, 160, 120, 40, 0],
+            y: [0, -60, -120, -150, -75, 0],
+            rotate: [0, 12, -12, 8, -8, 0]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4
+          }}
+          className="absolute top-1/3 right-1/6 text-7xl opacity-22"
+        >
+          🛸
         </motion.div>
       </div>
       
