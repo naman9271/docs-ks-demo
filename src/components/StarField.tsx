@@ -24,8 +24,18 @@ export default function StarField() {
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      // Validate dimensions
+      if (isFinite(width) && isFinite(height) && width > 0 && height > 0) {
+        canvas.width = width;
+        canvas.height = height;
+      } else {
+        // Fallback to safe dimensions
+        canvas.width = 1920;
+        canvas.height = 1080;
+      }
     };
 
     const createStars = () => {
@@ -33,14 +43,24 @@ export default function StarField() {
       const numStars = Math.floor((canvas.width * canvas.height) / 25000); // Much fewer stars
       
       for (let i = 0; i < numStars; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          z: Math.random() * 1000,
-          size: Math.random() * 1.5 + 0.3, // Smaller stars
-          opacity: Math.random() * 0.4 + 0.1, // Lower opacity
-          speed: Math.random() * 0.3 + 0.05 // Slower movement
-        });
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const z = Math.random() * 1000;
+        const size = Math.random() * 1.5 + 0.3;
+        const opacity = Math.random() * 0.4 + 0.1;
+        const speed = Math.random() * 0.3 + 0.05;
+        
+        // Only add star if all values are finite
+        if (isFinite(x) && isFinite(y) && isFinite(z) && isFinite(size) && isFinite(opacity) && isFinite(speed)) {
+          stars.push({
+            x,
+            y,
+            z,
+            size,
+            opacity,
+            speed
+          });
+        }
       }
       
       starsRef.current = stars;
@@ -49,13 +69,20 @@ export default function StarField() {
     const drawStar = (star: Star) => {
       const x = star.x;
       const y = star.y;
-      const size = star.size * (1000 / (1000 - star.z));
+      const zDistance = Math.max(1, 1000 - star.z); // Prevent division by zero/negative
+      const size = Math.max(0.1, star.size * (1000 / zDistance));
+      
+      // Validate all values are finite
+      if (!isFinite(x) || !isFinite(y) || !isFinite(size) || size <= 0) {
+        return;
+      }
       
       ctx.beginPath();
       ctx.arc(x, y, size, 0, Math.PI * 2);
       
-      // Create gradient for star glow
-      const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 3);
+      // Create gradient for star glow with validated radius
+      const gradientRadius = Math.max(1, size * 3);
+      const gradient = ctx.createRadialGradient(x, y, 0, x, y, gradientRadius);
       gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
       gradient.addColorStop(0.5, `rgba(147, 197, 253, ${star.opacity * 0.5})`);
       gradient.addColorStop(1, 'rgba(147, 197, 253, 0)');
@@ -65,27 +92,36 @@ export default function StarField() {
       
       // Add twinkling effect
       if (Math.random() < 0.01) {
-        ctx.beginPath();
-        ctx.arc(x, y, size * 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(147, 197, 253, ${star.opacity * 0.3})`;
-        ctx.fill();
+        const twinkleRadius = size * 2;
+        if (isFinite(twinkleRadius) && twinkleRadius > 0) {
+          ctx.beginPath();
+          ctx.arc(x, y, twinkleRadius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(147, 197, 253, ${star.opacity * 0.3})`;
+          ctx.fill();
+        }
       }
     };
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Create nebula-like background
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2, canvas.height / 2, 0,
-        canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height)
-      );
-      gradient.addColorStop(0, 'rgba(59, 130, 246, 0.03)');
-      gradient.addColorStop(0.5, 'rgba(147, 51, 234, 0.02)');
-      gradient.addColorStop(1, 'rgba(15, 23, 42, 0.05)');
+      // Create nebula-like background with validation
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const maxRadius = Math.max(canvas.width, canvas.height);
       
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      if (isFinite(centerX) && isFinite(centerY) && isFinite(maxRadius) && maxRadius > 0) {
+        const gradient = ctx.createRadialGradient(
+          centerX, centerY, 0,
+          centerX, centerY, maxRadius
+        );
+        gradient.addColorStop(0, 'rgba(59, 130, 246, 0.03)');
+        gradient.addColorStop(0.5, 'rgba(147, 51, 234, 0.02)');
+        gradient.addColorStop(1, 'rgba(15, 23, 42, 0.05)');
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
       
       // Update and draw stars
       starsRef.current.forEach(star => {
@@ -95,8 +131,18 @@ export default function StarField() {
         // Reset star if it's too close
         if (star.z <= 0) {
           star.z = 1000;
-          star.x = Math.random() * canvas.width;
-          star.y = Math.random() * canvas.height;
+          const newX = Math.random() * canvas.width;
+          const newY = Math.random() * canvas.height;
+          
+          // Validate new positions
+          if (isFinite(newX) && isFinite(newY)) {
+            star.x = newX;
+            star.y = newY;
+          } else {
+            // Fallback to safe positions
+            star.x = canvas.width / 2;
+            star.y = canvas.height / 2;
+          }
         }
         
         // No twinkling - keep stars static
