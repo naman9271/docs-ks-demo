@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { GitHubLogoIcon, SunIcon, MoonIcon } from "@radix-ui/react-icons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import HowItWorks from "../components/HowItWorks";
 import UseCases from "../components/UseCases";
 import CallToAction from "../components/CallToAction";

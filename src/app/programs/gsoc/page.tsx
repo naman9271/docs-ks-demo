@@ -181,7 +181,7 @@ export default function GSoCProgramPage() {
                 className="space-y-8"
               >
                 <div>
-                  <h2 className="text-3xl font-bold text-white mb-6">What You'll Get</h2>
+                  <h2 className="text-3xl font-bold text-white mb-6">What You&apos;ll Get</h2>
                   <div className="space-y-4">
                     {[
                       "Stipend from Google ($1,500 - $6,600)",

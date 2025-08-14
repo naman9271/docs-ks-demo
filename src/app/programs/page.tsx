@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-import { GitHubLogoIcon, SunIcon, MoonIcon, ArrowRightIcon, StarIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import StarField from "../../components/StarField";
 import NavHeader from "../../components/nav_header";

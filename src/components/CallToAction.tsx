@@ -105,7 +105,7 @@ export default function CallToAction() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Explore Documentation</h3>
               <p className="text-gray-300 mb-6">
-                Comprehensive guides, tutorials, and API references to help you master KubeStellar's capabilities.
+                Comprehensive guides, tutorials, and API references to help you master KubeStellar&apos;s capabilities.
               </p>
               <div className="space-y-3 mb-6">
                 <div className="bg-slate-950/80 rounded-lg p-3 text-sm">

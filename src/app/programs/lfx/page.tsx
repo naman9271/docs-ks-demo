@@ -157,7 +157,7 @@ export default function LFXProgramPage() {
                   LFX <span className="bg-gradient-to-r from-indigo-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">Mentorship</span>
                 </h1>
                 <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Join the Linux Foundation's LFX Mentorship program with KubeStellar. Get paid to contribute to open source while learning from industry experts.
+                  Join the Linux Foundation&apos;s LFX Mentorship program with KubeStellar. Get paid to contribute to open source while learning from industry experts.
                 </p>
               </motion.div>
 

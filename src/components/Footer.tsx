@@ -53,7 +53,7 @@ export default function Footer() {
                 Get in <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Touch</span>
               </h3>
               <p className="text-xl text-gray-300 mb-8">
-                Have questions about KubeStellar? We're here to help!
+                Have questions about KubeStellar? We&apos;re here to help!
               </p>
               
               {/* Contact Cards */}
